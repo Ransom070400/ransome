@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import TalkCard from "@/components/TalkCard";
 import Reveal from "@/components/Reveal";
@@ -10,41 +11,46 @@ const INITIAL = 6;
 
 export default function Speaking() {
   const [showAll, setShowAll] = useState(false);
-
   const sorted = [...speaking].sort((a, b) => b.date.localeCompare(a.date));
   const visible = showAll ? sorted : sorted.slice(0, INITIAL);
 
   return (
-    <section id="speaking" className="bg-surface/40 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading
-          eyebrow="Speaking"
-          title="On Stage"
-          description="Talks, workshops, and panels across the mobile and Web3 worlds — from keynotes to hands-on sessions."
-        />
+    <section id="speaking" className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
+      <SectionHeading
+        index="02"
+        kicker="Speaking & Community"
+        title="On stage, and in the trenches."
+        description="Keynotes, workshops, and panels across the mobile and Web3 worlds — from a room of first-timers to conference main stages."
+      />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatePresence initial={false}>
           {visible.map((talk, i) => (
-            <Reveal key={talk.id} delay={(i % 3) * 0.06}>
-              <TalkCard talk={talk} />
-            </Reveal>
-          ))}
-        </div>
-
-        {sorted.length > INITIAL && (
-          <div className="mt-10 text-center">
-            <button
-              type="button"
-              onClick={() => setShowAll((v) => !v)}
-              className="rounded-lg border border-border-subtle px-5 py-3 text-sm font-medium text-text transition-colors hover:border-accent/50 hover:bg-surface-2"
+            <motion.div
+              key={talk.id}
+              layout
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.4, delay: (i % 3) * 0.05 }}
             >
-              {showAll
-                ? "Show fewer"
-                : `View more (${sorted.length - INITIAL})`}
-            </button>
-          </div>
-        )}
+              <TalkCard talk={talk} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
+
+      {sorted.length > INITIAL && (
+        <Reveal className="mt-10 text-center">
+          <button
+            type="button"
+            onClick={() => setShowAll((v) => !v)}
+            className="rounded-full border border-ink/15 bg-bg-card px-6 py-3 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+          >
+            {showAll ? "Show fewer" : `View all ${sorted.length} talks →`}
+          </button>
+        </Reveal>
+      )}
     </section>
   );
 }

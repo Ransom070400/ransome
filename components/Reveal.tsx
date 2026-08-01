@@ -1,30 +1,52 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variant, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
+
+type Mode = "up" | "blur" | "fade" | "scale";
 
 interface RevealProps {
   children: ReactNode;
   delay?: number;
   className?: string;
-  /** Distance in px the element travels up as it fades in. */
+  mode?: Mode;
   y?: number;
 }
 
-/** Subtle fade-and-rise on scroll into view. Runs once. */
+const ease = [0.22, 1, 0.36, 1] as const;
+
+function variants(mode: Mode, y: number): Variants {
+  const hidden: Record<Mode, Variant> = {
+    up: { opacity: 0, y },
+    blur: { opacity: 0, y: y / 1.5, filter: "blur(10px)" },
+    fade: { opacity: 0 },
+    scale: { opacity: 0, scale: 0.96 },
+  };
+  const shown: Record<Mode, Variant> = {
+    up: { opacity: 1, y: 0 },
+    blur: { opacity: 1, y: 0, filter: "blur(0px)" },
+    fade: { opacity: 1 },
+    scale: { opacity: 1, scale: 1 },
+  };
+  return { hidden: hidden[mode], show: shown[mode] };
+}
+
+/** Fade / rise / blur-in as it scrolls into view. Runs once. */
 export default function Reveal({
   children,
   delay = 0,
   className,
-  y = 24,
+  mode = "up",
+  y = 28,
 }: RevealProps) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      variants={variants(mode, y)}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const }}
+      transition={{ duration: 0.7, delay, ease }}
     >
       {children}
     </motion.div>

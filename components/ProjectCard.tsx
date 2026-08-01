@@ -1,60 +1,74 @@
+"use client";
+
+import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 
-const statusStyles: Record<Project["status"], string> = {
-  "In Progress": "bg-amber-500/15 text-amber-300 ring-amber-500/30",
-  Shipped: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
-  Archived: "bg-slate-500/15 text-slate-300 ring-slate-500/30",
-};
+interface ProjectCardProps {
+  project: Project;
+  /** grid span + background utility classes */
+  className?: string;
+  /** true when the card sits on a dark background */
+  dark?: boolean;
+  featured?: boolean;
+}
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({
+  project,
+  className = "",
+  dark = false,
+  featured = false,
+}: ProjectCardProps) {
+  const href = project.link ?? project.github ?? "#";
+  const chip = dark
+    ? "bg-white/10 text-white/80"
+    : "bg-ink/[0.06] text-ink-soft";
+  const sub = dark ? "text-white/70" : "text-ink-soft";
+  const arrow = dark
+    ? "bg-white/15 text-white group-hover:bg-white group-hover:text-ink"
+    : "bg-ink/[0.06] text-ink group-hover:bg-ink group-hover:text-white";
+
   return (
-    <div className="group flex h-full flex-col rounded-lg border border-border-subtle bg-surface-2/60 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-accent/50 hover:bg-surface-2">
-      <div className="mb-3 flex items-start justify-between gap-3">
-        <h3 className="text-xl font-semibold text-text group-hover:text-white">
-          {project.name}
-        </h3>
+    <a
+      href={href}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[26px] p-7 transition-all duration-300 hover:-translate-y-1.5 ${className}`}
+    >
+      <span
+        className={`absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ${arrow}`}
+      >
+        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+      </span>
+
+      <div className="mb-3 flex items-center gap-2">
         <span
-          className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${statusStyles[project.status]}`}
+          className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${chip}`}
         >
           {project.status}
         </span>
       </div>
 
-      <p className="text-sm leading-relaxed text-text-muted">
+      <h3
+        className={`font-display font-bold leading-tight ${
+          featured ? "text-4xl sm:text-5xl" : "text-2xl"
+        }`}
+      >
+        {project.name}
+      </h3>
+
+      <p
+        className={`mt-3 leading-relaxed ${sub} ${
+          featured ? "max-w-xl text-lg" : "line-clamp-3 max-w-[92%] text-sm"
+        }`}
+      >
         {project.description}
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-auto flex flex-wrap gap-2 pt-6">
         {project.tech.map((t) => (
-          <span
-            key={t}
-            className="rounded-md border border-border-subtle bg-background/50 px-2 py-0.5 text-xs text-text-muted"
-          >
+          <span key={t} className={`rounded-md px-2 py-0.5 text-xs ${chip}`}>
             {t}
           </span>
         ))}
       </div>
-
-      {(project.link || project.github) && (
-        <div className="mt-auto flex items-center gap-4 pt-5 text-sm">
-          {project.link && (
-            <a
-              href={project.link}
-              className="font-medium text-accent hover:underline"
-            >
-              Live →
-            </a>
-          )}
-          {project.github && (
-            <a
-              href={project.github}
-              className="font-medium text-text-muted hover:text-text"
-            >
-              GitHub
-            </a>
-          )}
-        </div>
-      )}
-    </div>
+    </a>
   );
 }

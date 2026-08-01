@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Ransom EZE — React Native Engineer & Developer Relations",
   description:
-    "Ransom EZE builds performant mobile apps on decentralized infrastructure and helps thousands of developers ship their own. React Native Engineer & DevRel, now at 0G Labs.",
+    "The portfolio of Ransom EZE — React Native Engineer & DevRel building performant mobile apps on decentralized infrastructure and helping thousands of developers ship their own. Now at 0G Labs.",
   openGraph: {
     title: "Ransom EZE — React Native Engineer & Developer Relations",
     description:
@@ -33,11 +34,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
+      <body className="canvas-grain min-h-full">
         <Navbar />
-        {children}
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );
