@@ -36,9 +36,9 @@ export const projects: Project[] = [
     id: "pingou",
     name: "Pingou",
     description:
-      "A social networking platform focused on lightweight, real-time connection — built mobile-first with an emphasis on smooth interactions and offline resilience.",
+      "A social networking platform focused on meaningful real-world connections — built mobile-first across both frontend and backend, with an emphasis on smooth, real-time interactions.",
     tech: ["React Native", "Realtime", "Node.js"],
-    status: "Shipped",
+    status: "In Progress",
     link: "#",
     github: "#",
   },

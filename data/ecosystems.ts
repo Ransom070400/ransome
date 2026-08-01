@@ -5,9 +5,9 @@ export interface Ecosystem {
 
 export const ecosystems: Ecosystem[] = [
   { name: "0G Labs", note: "Decentralized AI" },
-  { name: "Sui", note: "zkLogin · Move" },
+  { name: "Sui", note: "Move" },
+  { name: "Ethereum", note: "Solidity" },
   { name: "React Native", note: "Mobile" },
-  { name: "Ethereum", note: "EVM · Web3" },
-  { name: "Base", note: "L2" },
-  { name: "Solana", note: "High-throughput" },
+  { name: "AI", note: "Applications" },
+  { name: "Web3", note: "dApps" },
 ];

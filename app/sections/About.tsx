@@ -8,24 +8,32 @@ import { experience } from "@/data/experience";
 
 const journey = [
   {
-    phase: "The Question",
-    body: "It started with curiosity — late nights taking apps apart just to understand what made them tick.",
+    phase: "Curiosity",
+    body: "It started at university. I was curious about almost everything — I explored data analytics, design, and entrepreneurship before deciding to focus on software engineering.",
   },
   {
-    phase: "React Native",
-    body: "Mobile became home: ship real, native experiences fast and put them straight into people's hands.",
+    phase: "Full-Stack",
+    body: "For several years I worked as a full-stack engineer, spending most of my time building with JavaScript and modern web technologies.",
   },
   {
     phase: "Into Web3",
-    body: "Fell for the idea that the infrastructure behind our apps could be open — owned by the people who use it.",
+    body: "I discovered Web3 through developer events on campus. It caught my attention immediately — I learned Solidity and completed a Web3 internship building decentralized applications.",
+  },
+  {
+    phase: "React Native",
+    body: "Then I found React Native: high-quality Android and iOS apps from a single codebase, no Swift or Kotlin required. I doubled down on mobile and shipped across consumer, AI, and Web3 products.",
+  },
+  {
+    phase: "The Ecosystem",
+    body: "Hackathons, tight-deadline builds, and collaboration grew into mentoring builders, judging hackathons, and — as a Sui ambassador — organizing workshops and programs focused on developer onboarding and retention.",
   },
   {
     phase: "Developer Relations",
-    body: "Turned hard infrastructure into workshops, demos, and docs that make builders feel unstoppable.",
+    body: "The part I enjoyed most wasn't just writing code — it was helping developers succeed. So I pursued DevRel intentionally: technical writing, public speaking, community building, workshop facilitation, and ecosystem strategy.",
   },
   {
-    phase: "Today · 0G Labs",
-    body: "Shipping reference apps on decentralized AI — and lifting up the next wave of African developers.",
+    phase: "Today",
+    body: "My work sits at the intersection of software engineering and Developer Relations — building products that solve real problems while helping developers grow and become long-term contributors to the ecosystems they join.",
   },
 ];
 
@@ -88,11 +96,10 @@ export default function About() {
                 <li className="rounded-2xl border border-line bg-bg-card p-5 transition-transform hover:-translate-y-1">
                   <div className="flex items-baseline justify-between gap-3">
                     <p className="font-display font-semibold text-ink">
-                      {e.title}
+                      {e.role}
                     </p>
-                    <span className="shrink-0 text-xs text-muted">
-                      {e.startDate}
-                      {e.endDate ? `–${e.endDate}` : "–Now"}
+                    <span className="shrink-0 whitespace-nowrap text-xs text-muted">
+                      {e.period}
                     </span>
                   </div>
                   <p className="text-sm font-medium text-purple">{e.company}</p>
