@@ -36,7 +36,7 @@ export default function AboutCard() {
           Ransom EZE
         </h2>
         <div className="mt-4 inline-flex rounded-full bg-white/15 px-3 py-1">
-          <span className="label text-white">React Native · DevRel</span>
+          <span className="label text-white">Software Engineer · DevRel</span>
         </div>
 
         <a

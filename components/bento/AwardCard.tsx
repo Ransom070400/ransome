@@ -12,7 +12,7 @@ export default function AwardCard() {
       </div>
       <div className="flex flex-[1.4] flex-col justify-center bg-yellow p-5 text-ink">
         <div className="font-display text-4xl font-bold leading-none">
-          <CountUp to={100} suffix="+" />
+          <CountUp to={1000} suffix="+" />
         </div>
         <p className="label mt-1.5 text-ink/60">Developers Mentored</p>
       </div>

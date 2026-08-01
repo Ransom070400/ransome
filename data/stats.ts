@@ -7,6 +7,6 @@ export interface Stat {
 export const stats: Stat[] = [
   { value: 4, label: "Countries" },
   { value: 123, suffix: "+", label: "Events" },
-  { value: 100, suffix: "+", label: "Developers Mentored" },
+  { value: 1000, suffix: "+", label: "Developers Mentored" },
   { value: 10, suffix: "+", label: "Hackathons" },
 ];

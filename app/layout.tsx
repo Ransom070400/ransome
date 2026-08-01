@@ -15,13 +15,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Ransom EZE — React Native Engineer & Developer Relations",
+  title: "Ransom EZE — Software Engineer & Developer Relations",
   description:
-    "The portfolio of Ransom EZE — React Native Engineer & DevRel building performant mobile apps on decentralized infrastructure and helping thousands of developers ship their own. Now at 0G Labs.",
+    "The portfolio of Ransom EZE — Software Engineer & DevRel building products on decentralized infrastructure and helping thousands of developers ship their own. Now at 0G Labs.",
   openGraph: {
-    title: "Ransom EZE — React Native Engineer & Developer Relations",
+    title: "Ransom EZE — Software Engineer & Developer Relations",
     description:
-      "Building on decentralized AI infrastructure and growing developer communities. 4 countries, 123+ events, 100+ developers mentored.",
+      "Building on decentralized AI infrastructure and growing developer communities. 4 countries, 123+ events, 1000+ developers mentored.",
     type: "website",
   },
 };

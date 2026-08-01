@@ -44,7 +44,7 @@ export default function BentoHero() {
           transition={{ duration: 0.7, ease, delay: 0.12 }}
           className="mt-3 max-w-xl text-lg text-ink-soft text-balance"
         >
-          React Native Engineer &amp; Developer Relations — building on
+          Software Engineer &amp; Developer Relations — building on
           decentralized infrastructure and mentoring builders across Africa.
         </motion.p>
       </div>
