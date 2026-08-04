@@ -19,7 +19,8 @@ import { driveImage } from "@/lib/images";
  */
 export const media = {
   // Portrait shown in the purple About card.
-  portrait: "/images/portrait.jpg" as string,
+  portrait:
+    "https://cocozqaswhyugfbilbxk.supabase.co/storage/v1/object/public/My%20prtfolio/photo_2026-08-04%2022.30.52.jpeg" as string,
 
   // Hero "Featured" card. youtubeId makes it play; poster is the still image.
   featured: {

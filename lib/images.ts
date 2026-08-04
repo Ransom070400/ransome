@@ -8,9 +8,10 @@
  *   - any other full image URL: returned unchanged (Imgur, Cloudinary, etc.)
  *
  * The Drive file must be shared as "Anyone with the link → Viewer".
- * Uses the lh3.googleusercontent.com endpoint, the most reliable Drive hotlink.
+ * Uses the drive.google.com/thumbnail endpoint — the most browser-hotlink-
+ * friendly Drive format (works from an <img>, unlike uc?export=view).
  */
-export function driveImage(idOrUrl: string, width = 1600): string {
+export function driveImage(idOrUrl: string, width = 1200): string {
   if (!idOrUrl) return "";
 
   const isUrl = /^https?:\/\//.test(idOrUrl);
@@ -24,5 +25,5 @@ export function driveImage(idOrUrl: string, width = 1600): string {
   // Extract the Drive file id (a run of 25+ url-safe chars).
   const match = idOrUrl.match(/[-\w]{25,}/);
   const id = match ? match[0] : idOrUrl;
-  return `https://lh3.googleusercontent.com/d/${id}=w${width}`;
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w${width}`;
 }

@@ -48,6 +48,8 @@ export default function SmartImage({
         src={src}
         alt={alt}
         loading={priority ? "eager" : "lazy"}
+        // Google/Drive-hosted images 403 when a Referer is sent — strip it.
+        referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
         className={`absolute inset-0 h-full w-full ${objectClass}`}
       />
