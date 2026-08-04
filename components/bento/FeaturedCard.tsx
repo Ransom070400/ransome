@@ -1,15 +1,63 @@
-import { Play } from "lucide-react";
+"use client";
 
-/** Featured media card — gradient placeholder with a play affordance. */
+import { useState } from "react";
+import { Play } from "lucide-react";
+import { media } from "@/data/media";
+import SmartImage from "@/components/SmartImage";
+
+/**
+ * Featured media card. Priority order:
+ *   1. If media.featured.youtubeId is set → thumbnail that plays inline.
+ *   2. Else if a poster image exists → show it.
+ *   3. Else → the designed gradient placeholder.
+ */
 export default function FeaturedCard() {
-  return (
-    <div className="relative h-full min-h-[220px] w-full">
-      {/* Placeholder visual until a real screenshot/photo is dropped in */}
+  const { youtubeId, poster, title, subtitle } = media.featured;
+  const [playing, setPlaying] = useState(false);
+
+  if (youtubeId && playing) {
+    return (
+      <div className="relative h-full min-h-[220px] w-full bg-black">
+        <iframe
+          className="absolute inset-0 h-full w-full"
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    );
+  }
+
+  const thumb = youtubeId
+    ? `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`
+    : undefined;
+
+  const gradient = (
+    <>
       <div className="absolute inset-0 bg-gradient-to-br from-[#1b1030] via-purple to-[#22d3ee]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.28),transparent_55%)]" />
+    </>
+  );
+
+  return (
+    <button
+      type="button"
+      onClick={() => youtubeId && setPlaying(true)}
+      className="relative h-full min-h-[220px] w-full text-left"
+      aria-label={youtubeId ? `Play ${title}` : title}
+    >
+      {/* thumbnail (yt) → poster image → gradient */}
+      {thumb ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={thumb} alt={title} className="absolute inset-0 h-full w-full object-cover" />
+      ) : (
+        <SmartImage src={poster} alt={title} sizes="(max-width:768px) 100vw, 40vw" fallback={gradient} />
+      )}
+      <div className="absolute inset-0 bg-black/20" />
 
       <div className="relative flex h-full flex-col justify-between p-6">
-        <span className="label w-fit rounded-full bg-black/25 px-3 py-1 text-white/90 backdrop-blur">
+        <span className="label w-fit rounded-full bg-black/30 px-3 py-1 text-white/90 backdrop-blur">
           Featured · On Stage
         </span>
 
@@ -19,12 +67,12 @@ export default function FeaturedCard() {
           </span>
           <div className="text-white">
             <p className="font-display text-lg font-semibold leading-tight">
-              Building on Decentralized AI
+              {title}
             </p>
-            <p className="text-sm text-white/70">0G Ecosystem Summit · 2026</p>
+            <p className="text-sm text-white/70">{subtitle}</p>
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }

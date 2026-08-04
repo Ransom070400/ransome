@@ -1,5 +1,6 @@
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import SmartImage from "@/components/SmartImage";
 import { gallery } from "@/data/gallery";
 
 export default function Gallery() {
@@ -26,14 +27,25 @@ export default function Gallery() {
                   : ""
             }
           >
-            <div
-              className="group relative h-full w-full overflow-hidden rounded-[22px]"
-              style={{
-                background: `linear-gradient(135deg, ${g.from}, ${g.to})`,
-              }}
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.28),transparent_55%)]" />
-              <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/0" />
+            <div className="group relative h-full w-full overflow-hidden rounded-[22px]">
+              <SmartImage
+                src={g.src}
+                alt={g.caption}
+                sizes="(max-width:768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                fallback={
+                  <>
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${g.from}, ${g.to})`,
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.28),transparent_55%)]" />
+                  </>
+                }
+              />
+              <div className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/10" />
               <div className="absolute inset-x-0 bottom-0 p-4">
                 <p className="font-display font-semibold text-white drop-shadow">
                   {g.caption}

@@ -64,8 +64,6 @@ export default function BentoHero() {
           tone=""
           arrow
           arrowTone="light"
-          href="#gallery"
-          ariaLabel="Featured moment"
         >
           <FeaturedCard />
         </BentoCard>

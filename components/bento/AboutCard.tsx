@@ -1,5 +1,7 @@
 import { Sparkles, Mail } from "lucide-react";
 import { email } from "@/data/social";
+import { media } from "@/data/media";
+import SmartImage from "@/components/SmartImage";
 
 const sideLabels = ["Speaking", "Projects", "Community", "Contact"];
 
@@ -21,11 +23,23 @@ export default function AboutCard() {
         <span className="label text-white/80">About Me</span>
       </div>
 
-      {/* Portrait — gradient-ringed monogram placeholder */}
+      {/* Portrait — real photo if added, gradient monogram otherwise */}
       <div className="my-6 flex justify-center">
         <div className="rounded-full bg-gradient-to-br from-white/70 via-white/20 to-transparent p-[3px]">
-          <div className="flex h-36 w-36 items-center justify-center rounded-full bg-purple/40 backdrop-blur">
-            <span className="font-display text-5xl font-bold text-white">RE</span>
+          <div className="relative h-36 w-36 overflow-hidden rounded-full bg-purple/40 backdrop-blur">
+            <SmartImage
+              src={media.portrait}
+              alt="Ransom EZE"
+              sizes="144px"
+              priority
+              fallback={
+                <div className="flex h-full w-full items-center justify-center">
+                  <span className="font-display text-5xl font-bold text-white">
+                    RE
+                  </span>
+                </div>
+              }
+            />
           </div>
         </div>
       </div>

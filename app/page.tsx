@@ -3,6 +3,7 @@ import About from "./sections/About";
 import Speaking from "./sections/Speaking";
 import Projects from "./sections/Projects";
 import Gallery from "./sections/Gallery";
+import Watch from "./sections/Watch";
 import Contact from "./sections/Contact";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Speaking />
       <Projects />
       <Gallery />
+      <Watch />
       <Contact />
     </main>
   );
