@@ -5,7 +5,7 @@ export interface SocialLink {
   href: string;
 }
 
-export const email = "hello@ransomeze.com";
+export const email = "ransomeze654@gmail.com";
 
 export const social: SocialLink[] = [
   { id: "x", label: "Twitter / X", handle: "@ransomeze", href: "https://x.com/" },
