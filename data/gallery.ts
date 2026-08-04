@@ -3,8 +3,10 @@ export interface GalleryItem {
   caption: string;
   date: string; // human-readable
   /**
-   * Optional photo path under /public. Drop a file here (e.g.
-   * /images/gallery/g1.jpg) and it replaces the gradient automatically.
+   * Optional photo — a local path ("/images/gallery/g1.jpg") OR a remote link
+   * (Imgur/Cloudinary URL, or `driveImage("<drive id or link>")` from
+   * "@/lib/images"). Replaces the gradient automatically; falls back to it if
+   * the link fails.
    */
   src?: string;
   // Gradient tokens used as tasteful placeholders until real photos are added.

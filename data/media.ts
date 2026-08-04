@@ -1,16 +1,27 @@
+import { driveImage } from "@/lib/images";
+
 /**
- * Central media config. Everything here is optional and drop-in:
- *   - Add an image file at the given /public path and it appears automatically.
- *   - Set a `youtubeId` and the player/thumbnail lights up.
- * Leave a value empty ("") to keep the designed gradient/placeholder.
+ * Central media config. Every value is optional and drop-in.
  *
- * See public/images/README.md for the expected filenames.
+ * For images you can use EITHER:
+ *   - a local file:   "/images/portrait.jpg"  (drop it under /public)
+ *   - a remote link:  "https://i.imgur.com/abc.jpg", a Cloudinary URL, etc.
+ *   - Google Drive:   driveImage("<file id or share link>")
+ *                     (the file must be shared "Anyone with the link")
+ *
+ * For videos, set `youtubeId` to the part after `v=` in a YouTube URL.
+ * Leave a value "" to keep the designed gradient/placeholder.
+ *
+ * Examples:
+ *   portrait: "/images/portrait.jpg"
+ *   portrait: "https://i.imgur.com/yourphoto.jpg"
+ *   portrait: driveImage("https://drive.google.com/file/d/1AbC.../view")
  */
 export const media = {
-  /** Portrait shown in the purple About card. Drop a file at this path. */
+  // Portrait shown in the purple About card.
   portrait: "/images/portrait.jpg" as string,
 
-  /** Hero "Featured" card. Set youtubeId to make it play; poster is optional. */
+  // Hero "Featured" card. youtubeId makes it play; poster is the still image.
   featured: {
     youtubeId: "" as string,
     poster: "/images/featured.jpg" as string,
@@ -18,3 +29,7 @@ export const media = {
     subtitle: "0G Ecosystem Summit · 2026",
   },
 };
+
+// Re-exported so `driveImage` is in scope right here when you want a Drive link,
+// e.g.  portrait: driveImage("https://drive.google.com/file/d/<id>/view")
+export { driveImage };
