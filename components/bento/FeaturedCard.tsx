@@ -8,12 +8,30 @@ import SmartImage from "@/components/SmartImage";
 /**
  * Featured media card. Priority order:
  *   1. If media.featured.youtubeId is set → thumbnail that plays inline.
- *   2. Else if a poster image exists → show it.
- *   3. Else → the designed gradient placeholder.
+ *   2. Else if media.featured.videoUrl is set → an .mp4/.webm that plays inline,
+ *      using its own first frame as the still.
+ *   3. Else if a poster image exists → show it.
+ *   4. Else → the designed gradient placeholder.
  */
 export default function FeaturedCard() {
-  const { youtubeId, poster, title, subtitle } = media.featured;
+  const { youtubeId, videoUrl, poster, title, subtitle } = media.featured;
   const [playing, setPlaying] = useState(false);
+
+  if (!youtubeId && videoUrl && playing) {
+    return (
+      <div className="relative h-full min-h-[220px] w-full bg-black">
+        {/* object-contain so a portrait stage clip is never cropped */}
+        <video
+          className="absolute inset-0 h-full w-full object-contain"
+          src={videoUrl}
+          title={title}
+          autoPlay
+          controls
+          playsInline
+        />
+      </div>
+    );
+  }
 
   if (youtubeId && playing) {
     return (
@@ -43,14 +61,24 @@ export default function FeaturedCard() {
   return (
     <button
       type="button"
-      onClick={() => youtubeId && setPlaying(true)}
+      onClick={() => (youtubeId || videoUrl) && setPlaying(true)}
       className="relative h-full min-h-[220px] w-full text-left"
-      aria-label={youtubeId ? `Play ${title}` : title}
+      aria-label={youtubeId || videoUrl ? `Play ${title}` : title}
     >
-      {/* thumbnail (yt) → poster image → gradient */}
+      {/* thumbnail (yt) → video first frame → poster image → gradient */}
       {thumb ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={thumb} alt={title} className="absolute inset-0 h-full w-full object-cover" />
+      ) : videoUrl ? (
+        // #t=0.1 nudges Safari/Chrome to render a real frame, not a black box
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src={`${videoUrl}#t=0.1`}
+          preload="metadata"
+          muted
+          playsInline
+          aria-hidden
+        />
       ) : (
         <SmartImage src={poster} alt={title} sizes="(max-width:768px) 100vw, 40vw" fallback={gradient} />
       )}

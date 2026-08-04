@@ -9,7 +9,10 @@ import { driveImage } from "@/lib/images";
  *   - Google Drive:   driveImage("<file id or share link>")
  *                     (the file must be shared "Anyone with the link")
  *
- * For videos, set `youtubeId` to the part after `v=` in a YouTube URL.
+ * For videos you can use EITHER:
+ *   - `youtubeId`: the part after `v=` in a YouTube URL, or
+ *   - `videoUrl`:  a direct link to an .mp4/.webm file (Supabase Storage,
+ *                  S3, etc. — the bucket must be public and CORS-open).
  * Leave a value "" to keep the designed gradient/placeholder.
  *
  * Examples:
@@ -22,12 +25,15 @@ export const media = {
   portrait:
     "https://cocozqaswhyugfbilbxk.supabase.co/storage/v1/object/public/My%20prtfolio/photo_2026-08-04%2022.30.52.jpeg" as string,
 
-  // Hero "Featured" card. youtubeId makes it play; poster is the still image.
+  // Hero "Featured" card. youtubeId OR videoUrl makes it play; poster is the
+  // still image used when neither is set (a video supplies its own first frame).
   featured: {
     youtubeId: "" as string,
+    videoUrl:
+      "https://cocozqaswhyugfbilbxk.supabase.co/storage/v1/object/public/My%20prtfolio/v1c044g50000d6tbd3nog65ife0b2am0.MP4" as string,
     poster: "/images/featured.jpg" as string,
-    title: "Building on Decentralized AI",
-    subtitle: "0G Ecosystem Summit · 2026",
+    title: "On Stage at ETF2026",
+    subtitle: "15,000 attendees",
   },
 };
 
