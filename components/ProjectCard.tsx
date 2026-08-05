@@ -19,6 +19,7 @@ export default function ProjectCard({
   featured = false,
 }: ProjectCardProps) {
   const href = project.link ?? project.github ?? "#";
+  const external = /^https?:\/\//.test(href);
   const chip = dark
     ? "bg-white/10 text-white/80"
     : "bg-ink/[0.06] text-ink-soft";
@@ -30,6 +31,7 @@ export default function ProjectCard({
   return (
     <a
       href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`group relative flex h-full flex-col overflow-hidden rounded-[26px] p-7 transition-all duration-300 hover:-translate-y-1.5 ${className}`}
     >
       <span

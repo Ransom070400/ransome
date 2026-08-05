@@ -20,19 +20,9 @@ const layout: Record<
     dark: false,
   },
   pingou: {
-    span: "col-span-1 min-h-[200px] md:col-start-3 md:col-span-1 md:row-start-2 md:min-h-0",
+    span: "col-span-2 min-h-[200px] md:col-start-3 md:col-span-2 md:row-start-2 md:min-h-0",
     tone: "bg-purple text-white",
     dark: true,
-  },
-  "ar-face-filter": {
-    span: "col-span-1 min-h-[200px] md:col-start-4 md:col-span-1 md:row-start-2 md:min-h-0",
-    tone: "bg-pink text-ink",
-    dark: false,
-  },
-  "aula-f75-driver": {
-    span: "col-span-2 min-h-[180px] md:col-start-1 md:col-span-4 md:row-start-3 md:min-h-0",
-    tone: "bg-yellow text-ink",
-    dark: false,
   },
 };
 
