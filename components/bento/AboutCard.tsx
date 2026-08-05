@@ -29,7 +29,7 @@ export default function AboutCard() {
           <div className="relative h-36 w-36 overflow-hidden rounded-full bg-purple/40 backdrop-blur">
             <SmartImage
               src={media.portrait}
-              alt="Ransom EZE"
+              alt="Ransom Eze"
               sizes="144px"
               priority
               fallback={
@@ -47,7 +47,7 @@ export default function AboutCard() {
       <div>
         <p className="label text-white/70">I&apos;m</p>
         <h2 className="mt-1 font-display text-4xl font-bold leading-none text-white">
-          Ransom EZE
+          Ransom Eze
         </h2>
         <div className="mt-4 inline-flex rounded-full bg-white/15 px-3 py-1">
           <span className="label text-white">Software Engineer · DevRel</span>

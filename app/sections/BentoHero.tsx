@@ -21,7 +21,7 @@ export default function BentoHero() {
           transition={{ duration: 0.6, ease }}
           className="flex items-center justify-between"
         >
-          <span className="label text-muted">Ransom EZE</span>
+          <span className="label text-muted">Portfolio</span>
           <span className="label flex items-center gap-2 text-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-mint-deep" />
             Portfolio © 2026
@@ -32,9 +32,9 @@ export default function BentoHero() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease, delay: 0.05 }}
-          className="mt-2 font-display text-[clamp(3.5rem,13vw,10rem)] font-bold leading-[0.86] tracking-[-0.03em] text-ink"
+          className="mt-2 font-display text-[clamp(3rem,11vw,8.5rem)] font-bold leading-[0.86] tracking-[-0.03em] text-ink"
         >
-          Portfolio
+          Ransom Eze
           <span className="align-top text-purple">.</span>
         </motion.h1>
 
