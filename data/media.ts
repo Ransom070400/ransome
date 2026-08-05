@@ -32,8 +32,10 @@ export const media = {
     videoUrl:
       "https://cocozqaswhyugfbilbxk.supabase.co/storage/v1/object/public/My%20prtfolio/v1c044g50000d6tbd3nog65ife0b2am0.MP4" as string,
     poster: "/images/featured.jpg" as string,
-    title: "On Stage at ETF2026",
-    subtitle: "15,000 attendees",
+    title: "Building on 0G",
+    subtitle: "Enugu Tech Fest · 15,000 attendees",
+    /** Shown as a badge so people know what they're committing to. "" hides it. */
+    duration: "0:53" as string,
   },
 };
 
