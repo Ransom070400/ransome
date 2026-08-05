@@ -43,7 +43,7 @@ const meta: Record<
     icon: TelegramIcon,
     tone: "bg-yellow text-ink",
     dark: false,
-    span: "md:col-start-1 md:row-start-3",
+    span: "col-span-2 md:col-start-1 md:col-span-2 md:row-start-3",
   },
   youtube: {
     icon: YoutubeIcon,
@@ -159,7 +159,7 @@ export default function Contact() {
 
       <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 text-sm text-muted sm:flex-row">
         <p>Based in Nigeria 🇳🇬 · available worldwide</p>
-        <p>© 2026 Ransom EZE. Built with intention.</p>
+        <p>© 2026 Ransom Eze. Built with intention.</p>
       </div>
     </footer>
   );

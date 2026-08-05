@@ -8,25 +8,34 @@ export interface SocialLink {
 export const email = "ransomeze654@gmail.com";
 
 export const social: SocialLink[] = [
-  { id: "x", label: "Twitter / X", handle: "@ransomeze", href: "https://x.com/" },
+  {
+    id: "x",
+    label: "Twitter / X",
+    handle: "@ezeransome",
+    href: "https://x.com/ezeransome",
+  },
   {
     id: "linkedin",
     label: "LinkedIn",
-    handle: "in/ransomeze",
-    href: "https://linkedin.com/",
+    handle: "in/eze-ransom",
+    href: "https://www.linkedin.com/in/eze-ransom-281640295/",
   },
-  { id: "github", label: "GitHub", handle: "@ransomeze", href: "https://github.com/" },
-  { id: "telegram", label: "Telegram", handle: "@ransomeze", href: "https://t.me/" },
   {
-    id: "youtube",
-    label: "YouTube",
-    handle: "@ransomeze",
-    href: "https://youtube.com/",
+    id: "github",
+    label: "GitHub",
+    handle: "@Ransom070400",
+    href: "https://github.com/Ransom070400",
+  },
+  {
+    id: "telegram",
+    label: "Telegram",
+    handle: "@Ransom070",
+    href: "https://t.me/Ransom070",
   },
   {
     id: "medium",
     label: "Medium",
-    handle: "@ransomeze",
-    href: "https://medium.com/",
+    handle: "@ransomeze654",
+    href: "https://medium.com/@ransomeze654",
   },
 ];
