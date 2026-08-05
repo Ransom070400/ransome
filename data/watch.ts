@@ -4,39 +4,48 @@ export interface Video {
   event: string;
   date: string; // human-readable
   /**
-   * YouTube (or leave empty). Set this and the card shows a real thumbnail
-   * and plays inline; empty shows a designed "coming soon" placeholder.
+   * YouTube id (the part after `v=`). Takes priority when set: the card shows
+   * a real thumbnail and plays inline.
    */
   youtubeId: string;
+  /**
+   * Direct link to an .mp4/.mov/.webm instead. The card uses the video's own
+   * frames as a silent preview and opens the full player in a lightbox.
+   */
+  videoUrl?: string;
+  /** Shown as a badge so people know the length up front. */
+  duration?: string;
 }
+
+const BUCKET =
+  "https://cocozqaswhyugfbilbxk.supabase.co/storage/v1/object/public/My%20prtfolio";
 
 export const watch: Video[] = [
   {
-    id: "v1",
-    title: "Building on Decentralized AI Infrastructure with 0G",
-    event: "0G Ecosystem Summit",
-    date: "Jun 2026",
+    id: "etf-hackathon-day1",
+    title: "Hackathon Day 1 — Implementation Walkthrough",
+    event: "Enugu Tech Fest Hackathon",
+    date: "Feb 2026",
     youtubeId: "",
+    videoUrl: `${BUCKET}/I%20Facilitated%20@enugutechfest.ng%20hackathon%20Day%201%20was%20succesful%20we%20had%20a%20implementation%20workthroug.mp4`,
+    duration: "0:38",
   },
   {
-    id: "v2",
-    title: "Onboarding the Next Wave of Web3 Developers",
-    event: "Sui Builder House",
-    date: "Mar 2026",
+    id: "etf-hackathon-workshop",
+    title: "Hackathon Workshop",
+    event: "Enugu Tech Fest Hackathon",
+    date: "Feb 2026",
     youtubeId: "",
+    videoUrl: `${BUCKET}/Hack.3.MOV`,
+    duration: "0:29",
   },
   {
-    id: "v3",
-    title: "Shipping Cross-Platform Apps with React Native",
-    event: "Developer Workshop",
-    date: "Nov 2025",
+    id: "build-on-sui-enugu-video",
+    title: "Build on Sui — Enugu",
+    event: "Build on Sui Workshop",
+    date: "2025",
     youtubeId: "",
-  },
-  {
-    id: "v4",
-    title: "Developer Relations: Building Communities That Last",
-    event: "DevRel Panel",
-    date: "Jun 2025",
-    youtubeId: "",
+    videoUrl: `${BUCKET}/-2517880602247388661.MP4`,
+    duration: "2:03",
   },
 ];
