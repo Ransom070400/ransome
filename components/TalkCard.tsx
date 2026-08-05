@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Users } from "lucide-react";
 import type { Talk } from "@/data/speaking";
 import { flagEmoji, formatMonthYear } from "@/lib/format";
 
@@ -12,9 +12,11 @@ const typeStyles: Record<Talk["type"], string> = {
 
 export default function TalkCard({ talk }: { talk: Talk }) {
   const Wrapper = talk.link ? "a" : "div";
+  const external = /^https?:\/\//.test(talk.link ?? "");
   return (
     <Wrapper
       {...(talk.link ? { href: talk.link } : {})}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="group relative flex h-full flex-col rounded-[22px] border border-line bg-bg-card p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,0.25)]"
     >
       {talk.link && (
@@ -42,9 +44,17 @@ export default function TalkCard({ talk }: { talk: Talk }) {
         </p>
       )}
 
-      <div className="mt-auto flex items-center gap-2 pt-4 text-sm text-muted">
-        <span aria-hidden>{flagEmoji(talk.countryCode)}</span>
-        <span>{talk.location}</span>
+      <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-4 text-sm text-muted">
+        <span className="flex items-center gap-2">
+          <span aria-hidden>{flagEmoji(talk.countryCode)}</span>
+          <span>{talk.location}</span>
+        </span>
+        {talk.attendance && (
+          <span className="flex items-center gap-1.5 rounded-full bg-ink/[0.05] px-2.5 py-0.5 text-xs font-medium text-ink-soft">
+            <Users className="h-3 w-3" aria-hidden />
+            {talk.attendance.toLocaleString("en-US")} attendees
+          </span>
+        )}
       </div>
     </Wrapper>
   );
