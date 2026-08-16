@@ -1,0 +1,173 @@
+/*
+ * Blocks specific to the "Understanding 0G" deck. Everything shared — stage,
+ * nav, type, cards, grids — lives in deck.module.css.
+ */
+
+/* ─── Feature rows ──────────────────────────────────────────────────────── */
+
+.feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  background: var(--deck-surface);
+  border: 1px solid var(--deck-border);
+  border-radius: 10px;
+}
+
+.feat strong {
+  display: block;
+  font-weight: 600;
+  font-size: 0.86rem;
+  margin-bottom: 0.1rem;
+  color: var(--deck-text);
+}
+
+.feat span {
+  color: var(--deck-text-2);
+  font-size: 0.78rem;
+}
+
+.featDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--deck-accent);
+  margin-top: 7px;
+}
+
+.featList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Dot-less variant used for the three verification models on the compute slide. */
+.featStacked {
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.featStacked strong {
+  font-size: 0.85rem;
+}
+
+.featStacked span {
+  font-size: 0.76rem;
+}
+
+/* ─── INFT comparison ───────────────────────────────────────────────────── */
+
+.inftCompare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.inftBox {
+  background: var(--deck-surface);
+  border: 1px solid var(--deck-border);
+  border-radius: 12px;
+  padding: 1.3rem;
+}
+
+.inftBox h4 {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  color: var(--deck-text);
+}
+
+.inftBox ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0;
+  margin: 0;
+}
+
+.inftBox li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.78rem;
+  color: var(--deck-text-2);
+}
+
+.inftOld {
+  border-left: 3px solid var(--deck-bad);
+}
+
+.inftOld li::before {
+  content: "\2014";
+  position: absolute;
+  left: 0;
+  color: var(--deck-bad);
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+.inftNew {
+  border-left: 3px solid var(--deck-accent);
+}
+
+.inftNew li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: var(--deck-accent);
+  font-weight: 700;
+}
+
+/* ─── Use cases ─────────────────────────────────────────────────────────── */
+
+.use {
+  background: var(--deck-surface);
+  border: 1px solid var(--deck-border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: border-color 0.3s;
+}
+
+.use:hover {
+  border-color: var(--deck-accent-soft);
+}
+
+.use h3 {
+  font-size: 0.88rem;
+  margin-bottom: 0.2rem;
+}
+
+.use p {
+  color: var(--deck-text-2);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.useBar {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--deck-accent);
+  margin-bottom: 0.7rem;
+}
+
+/* Layer stack and node diagrams sit narrower than the full-width flows. */
+.inlineDiagram {
+  width: 100%;
+  max-width: 340px;
+  margin-top: 1.5rem;
+}
+
+.inlineDiagram svg {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 860px) {
+  .inftCompare {
+    grid-template-columns: 1fr;
+  }
+}

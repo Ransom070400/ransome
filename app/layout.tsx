@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import SideRail from "@/components/SideRail";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,6 +25,10 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Document shell only. Page chrome lives in the (site) group so /slides can
+ * render a deck edge to edge.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,14 +39,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="canvas-grain min-h-full">
-        <a href="#top" className="skip-link">
-          Skip to content
-        </a>
-        <Navbar />
-        <SideRail />
-        <div className="relative z-10">{children}</div>
-      </body>
+      <body className="canvas-grain min-h-full">{children}</body>
     </html>
   );
 }

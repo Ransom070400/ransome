@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import TalkCard from "@/components/TalkCard";
@@ -40,8 +41,8 @@ export default function Speaking() {
         </AnimatePresence>
       </div>
 
-      {sorted.length > INITIAL && (
-        <Reveal className="mt-10 text-center">
+      <Reveal className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        {sorted.length > INITIAL && (
           <button
             type="button"
             onClick={() => setShowAll((v) => !v)}
@@ -49,8 +50,15 @@ export default function Speaking() {
           >
             {showAll ? "Show fewer" : `View all ${sorted.length} talks →`}
           </button>
-        </Reveal>
-      )}
+        )}
+
+        <Link
+          href="/slides"
+          className="rounded-full border border-ink/15 bg-bg-card px-6 py-3 text-sm font-medium text-ink transition-transform hover:-translate-y-0.5"
+        >
+          Browse the slide decks →
+        </Link>
+      </Reveal>
     </section>
   );
 }

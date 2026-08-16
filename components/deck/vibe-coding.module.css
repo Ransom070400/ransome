@@ -1,0 +1,335 @@
+/*
+ * Blocks specific to the "Vibe Coding Starter Guide" deck. Everything shared —
+ * stage, nav, type, cards, grids — lives in deck.module.css.
+ */
+
+/* ─── Title slide contents ──────────────────────────────────────────────── */
+
+.contentsGrid {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contentsItem {
+  font-family: var(--font-deck-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--deck-text-2);
+  border: 1px solid var(--deck-border);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  background: var(--deck-surface);
+}
+
+/* ─── Tables ────────────────────────────────────────────────────────────── */
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--deck-surface);
+  border: 1px solid var(--deck-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table th {
+  font-family: var(--font-deck-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--deck-accent);
+  background: var(--deck-accent-tint);
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid var(--deck-border);
+}
+
+.table td {
+  font-size: 0.84rem;
+  color: var(--deck-text-2);
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--deck-border);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table td strong {
+  color: var(--deck-text);
+  font-weight: 600;
+}
+
+/* ─── Callout ───────────────────────────────────────────────────────────── */
+
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  background: var(--deck-accent-tint);
+  border: 1px solid var(--deck-accent-line);
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.calloutIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--deck-accent);
+}
+
+.callout strong {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.3rem;
+  color: var(--deck-text);
+}
+
+.callout p {
+  font-size: 0.82rem;
+  color: var(--deck-text-2);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Code samples ──────────────────────────────────────────────────────── */
+
+.codeCompare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.codeBlock {
+  position: relative;
+  overflow: hidden;
+  background: #1e1e2e;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+}
+
+.codeBlock code {
+  display: block;
+  font-family: var(--font-deck-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #cdd6f4;
+}
+
+/* Denser sample, for the two-up slides where a block runs long. */
+.codeBlock .codeSm {
+  font-size: 0.73rem;
+}
+
+.codeGood {
+  border-left: 3px solid var(--deck-accent);
+}
+
+.codeBad {
+  border-left: 3px solid var(--deck-bad);
+}
+
+.codeLabel {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.8rem;
+  font-family: var(--font-deck-mono), ui-monospace, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+.labelGood {
+  color: var(--deck-accent);
+  background: var(--deck-accent-tint);
+}
+
+.labelBad {
+  color: var(--deck-bad);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ─── Lists ─────────────────────────────────────────────────────────────── */
+
+.whyList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+.whyItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--deck-text-2);
+}
+
+.whyDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--deck-accent);
+  flex-shrink: 0;
+}
+
+.miniList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.miniList span {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.78rem;
+  color: var(--deck-text-2);
+}
+
+.miniList span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--deck-accent);
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--deck-text-2);
+}
+
+.checkBox {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1.5px solid var(--deck-accent);
+  flex-shrink: 0;
+}
+
+.checkBox::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 4px;
+  height: 7px;
+  border: solid var(--deck-accent);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+/* ─── Emphasis ──────────────────────────────────────────────────────────── */
+
+.highlightBox {
+  background: var(--deck-accent-tint);
+  border: 1px solid var(--deck-accent-line);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 0.82rem;
+  color: var(--deck-text);
+  font-weight: 500;
+  margin-top: 0.8rem;
+}
+
+/* "Use AI for / Do manually" split under tip 13. */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.twoCol > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.twoCol strong {
+  font-size: 0.76rem;
+}
+
+.twoCol span {
+  font-size: 0.74rem;
+  color: var(--deck-text-2);
+}
+
+.forAi {
+  color: var(--deck-accent);
+}
+
+.byHand {
+  color: var(--deck-warn);
+}
+
+/* ─── BMAD benefit tiles ────────────────────────────────────────────────── */
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.statCard strong {
+  font-size: 0.82rem;
+}
+
+.statCard span {
+  font-size: 0.72rem;
+  color: var(--deck-text-2);
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: var(--deck-accent-tint);
+  color: var(--deck-accent);
+  font-family: var(--font-deck-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}
