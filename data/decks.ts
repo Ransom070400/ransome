@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import ReachyMiniDeck from "@/components/deck/ReachyMiniDeck";
 import ZeroGravityDeck from "@/components/deck/ZeroGravityDeck";
 import VibeCodingDeck from "@/components/deck/VibeCodingDeck";
 
@@ -26,6 +27,16 @@ export const decks: DeckEntry[] = [
     context: "Workshop deck",
     slides: 13,
     component: ZeroGravityDeck,
+  },
+  {
+    slug: "0g-reachy-mini",
+    title: "0G x Reachy Mini",
+    description:
+      "A practical breakdown of Reachy Mini, physical AI use cases, and how to connect it to models on pc.0g.ai.",
+    tag: "Robotics · AI",
+    context: "Explainer deck",
+    slides: 6,
+    component: ReachyMiniDeck,
   },
   {
     slug: "vibe-coding",
