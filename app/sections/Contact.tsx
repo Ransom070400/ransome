@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import type { ComponentType, SVGProps } from "react";
@@ -157,8 +158,18 @@ export default function Contact() {
         })}
       </div>
 
-      <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 text-sm text-muted sm:flex-row">
+      <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 text-sm text-muted sm:flex-row">
         <p>Based in Nigeria 🇳🇬 · available worldwide</p>
+
+        <nav className="flex items-center gap-5" aria-label="More pages">
+          <Link href="/writing" className="transition-colors hover:text-ink">
+            Writing
+          </Link>
+          <Link href="/slides" className="transition-colors hover:text-ink">
+            Slides
+          </Link>
+        </nav>
+
         <p>© 2026 Ransom Eze. Built with intention.</p>
       </div>
     </footer>

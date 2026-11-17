@@ -1,0 +1,73 @@
+export const meta = {
+  title: "How writing works on this site",
+  description:
+    "Notes on the setup behind this section — how a post gets published, what formatting is available, and how drafts stay hidden.",
+  date: "2026-08-16",
+  tags: ["Meta", "Next.js"],
+};
+
+This is a placeholder so the section has something in it. Delete the file when
+you've written your own — the index handles being empty.
+
+## Publishing a post
+
+Add an `.mdx` file to `content/writing/`. The filename becomes the URL, so
+`decentralized-ai.mdx` is served at `/writing/decentralized-ai`. Every post
+starts with a `meta` export:
+
+```mdx
+export const meta = {
+  title: "What I learned running 123 events",
+  description: "One or two sentences. Shown on the index and in link previews.",
+  date: "2026-08-20",
+  tags: ["DevRel"],
+};
+
+Your first paragraph starts here.
+```
+
+That's the whole workflow. No database, no CMS, no build step to remember —
+the index page, the [RSS feed](/writing/feed.xml), and the sitemap all pick
+the post up from the file itself.
+
+### Drafts
+
+Set `draft: true` and the post disappears from the index, the feed, and the
+build. It won't be reachable by URL either, so you can leave half-finished
+posts in the folder indefinitely.
+
+## What you can write
+
+Ordinary markdown covers most of it — **bold**, _italics_, `inline code`, and
+links, both [internal](/slides) and [external](https://0g.ai).
+
+Lists work as expected:
+
+- Bullets, with nesting
+- GitHub-flavoured extras like ~~strikethrough~~
+- Task lists, tables, and footnotes
+
+1. Numbered lists too
+2. Which is handy for walkthroughs
+
+> Blockquotes are styled for pull quotes — a good place for the line you want
+> people to screenshot.
+
+Tables come from the GFM plugin:
+
+| Element      | Where it's styled     | Notes                          |
+| ------------ | --------------------- | ------------------------------ |
+| Headings     | `mdx-components.tsx`  | Auto-linked via `rehype-slug`  |
+| Code blocks  | `mdx-components.tsx`  | Dark, horizontally scrollable  |
+| Images       | `mdx-components.tsx`  | Drop files in `public/images/` |
+
+Because this is MDX rather than plain markdown, you can also import a React
+component and drop it straight into a post when a diagram or a live demo would
+explain something better than a paragraph.
+
+---
+
+## Headings are linkable
+
+Every heading gets an `id`, so you can send someone directly to a section
+rather than to the top of the post.

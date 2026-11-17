@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { sections } from "@/lib/nav";
 
@@ -76,6 +77,14 @@ export default function Navbar() {
         </a>
 
         <div className="flex items-center gap-2">
+          {/* Standalone pages — the rail and sheet only cover on-page sections. */}
+          <Link
+            href="/writing"
+            className={`hidden rounded-full border px-4 py-2 text-sm font-medium text-ink transition-all duration-300 md:inline-block ${surface}`}
+          >
+            Writing
+          </Link>
+
           <a
             href="#contact"
             className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-white transition-transform hover:scale-[1.03] md:inline-block"
@@ -131,6 +140,22 @@ export default function Navbar() {
                 {s.label}
               </motion.a>
             ))}
+            <div className="my-2 border-t border-line" />
+
+            {[
+              { href: "/writing", label: "Writing" },
+              { href: "/slides", label: "Slides" },
+            ].map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                onClick={close}
+                className="block rounded-xl px-4 py-3 text-sm text-ink-soft transition-colors hover:bg-ink/[0.04]"
+              >
+                {page.label}
+              </Link>
+            ))}
+
             <a
               href="#contact"
               onClick={close}
